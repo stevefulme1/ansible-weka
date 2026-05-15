@@ -1,0 +1,24 @@
+---
+requires_ansible: '>=2.16.0'
+action_groups:
+  weka:
+    - weka_filesystem
+    - weka_snapshot
+    - weka_quota
+    - weka_nfs_permission
+    - weka_s3_bucket
+    - weka_interface_group
+plugin_routing:
+  modules:
+    weka_filesystem:
+      redirect: stevefulme1.weka.weka_filesystem
+    weka_snapshot:
+      redirect: stevefulme1.weka.weka_snapshot
+    weka_quota:
+      redirect: stevefulme1.weka.weka_quota
+    weka_nfs_permission:
+      redirect: stevefulme1.weka.weka_nfs_permission
+    weka_s3_bucket:
+      redirect: stevefulme1.weka.weka_s3_bucket
+    weka_interface_group:
+      redirect: stevefulme1.weka.weka_interface_group
