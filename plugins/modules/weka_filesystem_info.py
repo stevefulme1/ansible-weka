@@ -40,6 +40,10 @@ options:
         description: Whether to validate SSL certificates.
         type: bool
         default: true
+
+    filesystem_uid:
+        description: The filesystem uid.
+        type: str
 """
 
 EXAMPLES = r"""

@@ -40,6 +40,10 @@ options:
         description: Whether to validate SSL certificates.
         type: bool
         default: true
+
+    quota_id:
+        description: The quota id.
+        type: str
 """
 
 EXAMPLES = r"""

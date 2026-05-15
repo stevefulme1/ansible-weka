@@ -40,6 +40,10 @@ options:
         description: Whether to validate SSL certificates.
         type: bool
         default: true
+
+    snapshot_uid:
+        description: The snapshot uid.
+        type: str
 """
 
 EXAMPLES = r"""

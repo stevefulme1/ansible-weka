@@ -40,6 +40,10 @@ options:
         description: Whether to validate SSL certificates.
         type: bool
         default: true
+
+    cluster_id:
+        description: The cluster id.
+        type: str
 """
 
 EXAMPLES = r"""

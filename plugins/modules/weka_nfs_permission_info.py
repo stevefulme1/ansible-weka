@@ -40,6 +40,10 @@ options:
         description: Whether to validate SSL certificates.
         type: bool
         default: true
+
+    permission_id:
+        description: The permission id.
+        type: str
 """
 
 EXAMPLES = r"""

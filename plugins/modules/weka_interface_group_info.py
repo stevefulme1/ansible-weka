@@ -40,6 +40,10 @@ options:
         description: Whether to validate SSL certificates.
         type: bool
         default: true
+
+    interface_group_uid:
+        description: The interface group uid.
+        type: str
 """
 
 EXAMPLES = r"""

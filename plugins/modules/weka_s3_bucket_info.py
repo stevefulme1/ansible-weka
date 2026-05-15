@@ -40,6 +40,10 @@ options:
         description: Whether to validate SSL certificates.
         type: bool
         default: true
+
+    bucket_name:
+        description: The bucket name.
+        type: str
 """
 
 EXAMPLES = r"""
