@@ -7,12 +7,12 @@
 """weka dynamic inventory plugin."""
 
 from __future__ import absolute_import, division, print_function
+
 __metaclass__ = type
 
 DOCUMENTATION = r"""
 ---
 name: weka_inventory
-plugin_type: inventory
 short_description: Weka cluster nodes and containers
 description:
     - Dynamically discovers Weka cluster nodes and containers.
@@ -59,6 +59,7 @@ from ansible.plugins.inventory import BaseInventoryPlugin
 
 try:
     import requests
+
     HAS_REQUESTS = True
 except ImportError:
     HAS_REQUESTS = False
