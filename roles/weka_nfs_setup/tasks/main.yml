@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for weka_nfs_setup
+# Configure NFS exports and client groups
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - weka_nfs_setup_host is defined
+    fail_msg: "weka_nfs_setup_host must be defined"
+    quiet: true
+
+- name: Execute weka nfs setup
+  ansible.builtin.debug:
+    msg: >-
+      Configure NFS exports and client groups.
+      Target: {{ weka_nfs_setup_host }}

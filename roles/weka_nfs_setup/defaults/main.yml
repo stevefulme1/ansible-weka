@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for weka_nfs_setup
+
+# Target host
+weka_nfs_setup_host: ""
+
+# Authentication
+weka_nfs_setup_username: ""
+weka_nfs_setup_password: ""
+weka_nfs_setup_api_key: ""
+
+# Behavior
+weka_nfs_setup_validate_certs: true
+weka_nfs_setup_state: present

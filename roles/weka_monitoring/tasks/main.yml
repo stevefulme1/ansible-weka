@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for weka_monitoring
+# Set up alerting and event monitoring
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - weka_monitoring_host is defined
+    fail_msg: "weka_monitoring_host must be defined"
+    quiet: true
+
+- name: Execute weka monitoring
+  ansible.builtin.debug:
+    msg: >-
+      Set up alerting and event monitoring.
+      Target: {{ weka_monitoring_host }}

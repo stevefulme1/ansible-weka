@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for weka_cluster_setup
+
+# Target host
+weka_cluster_setup_host: ""
+
+# Authentication
+weka_cluster_setup_username: ""
+weka_cluster_setup_password: ""
+weka_cluster_setup_api_key: ""
+
+# Behavior
+weka_cluster_setup_validate_certs: true
+weka_cluster_setup_state: present

@@ -1,0 +1,27 @@
+---
+argument_specs:
+  main:
+    short_description: "Create filesystems with quotas and tiering"
+    options:
+      weka_filesystem_provision_host:
+        description: Target host address
+        type: str
+        required: true
+      weka_filesystem_provision_username:
+        description: Authentication username
+        type: str
+      weka_filesystem_provision_password:
+        description: Authentication password
+        type: str
+      weka_filesystem_provision_api_key:
+        description: API key for authentication
+        type: str
+      weka_filesystem_provision_validate_certs:
+        description: Validate SSL certificates
+        type: bool
+        default: true
+      weka_filesystem_provision_state:
+        description: Desired state
+        type: str
+        default: present
+        choices: [present, absent]

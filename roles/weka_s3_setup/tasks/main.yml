@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for weka_s3_setup
+# Configure S3 gateway with IAM policies
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - weka_s3_setup_host is defined
+    fail_msg: "weka_s3_setup_host must be defined"
+    quiet: true
+
+- name: Execute weka s3 setup
+  ansible.builtin.debug:
+    msg: >-
+      Configure S3 gateway with IAM policies.
+      Target: {{ weka_s3_setup_host }}

@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for weka_filesystem_provision
+
+# Target host
+weka_filesystem_provision_host: ""
+
+# Authentication
+weka_filesystem_provision_username: ""
+weka_filesystem_provision_password: ""
+weka_filesystem_provision_api_key: ""
+
+# Behavior
+weka_filesystem_provision_validate_certs: true
+weka_filesystem_provision_state: present

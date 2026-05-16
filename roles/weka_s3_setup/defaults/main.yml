@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for weka_s3_setup
+
+# Target host
+weka_s3_setup_host: ""
+
+# Authentication
+weka_s3_setup_username: ""
+weka_s3_setup_password: ""
+weka_s3_setup_api_key: ""
+
+# Behavior
+weka_s3_setup_validate_certs: true
+weka_s3_setup_state: present

@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for weka_tiering_setup
+# Configure hot/cold data tiering policies
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - weka_tiering_setup_host is defined
+    fail_msg: "weka_tiering_setup_host must be defined"
+    quiet: true
+
+- name: Execute weka tiering setup
+  ansible.builtin.debug:
+    msg: >-
+      Configure hot/cold data tiering policies.
+      Target: {{ weka_tiering_setup_host }}

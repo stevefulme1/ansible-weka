@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for weka_filesystem_provision
+# Create filesystems with quotas and tiering
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - weka_filesystem_provision_host is defined
+    fail_msg: "weka_filesystem_provision_host must be defined"
+    quiet: true
+
+- name: Execute weka filesystem provision
+  ansible.builtin.debug:
+    msg: >-
+      Create filesystems with quotas and tiering.
+      Target: {{ weka_filesystem_provision_host }}

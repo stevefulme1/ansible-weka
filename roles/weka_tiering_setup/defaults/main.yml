@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for weka_tiering_setup
+
+# Target host
+weka_tiering_setup_host: ""
+
+# Authentication
+weka_tiering_setup_username: ""
+weka_tiering_setup_password: ""
+weka_tiering_setup_api_key: ""
+
+# Behavior
+weka_tiering_setup_validate_certs: true
+weka_tiering_setup_state: present

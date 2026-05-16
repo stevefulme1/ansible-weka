@@ -1,0 +1,27 @@
+---
+argument_specs:
+  main:
+    short_description: "Enable encryption, LDAP, and TLS"
+    options:
+      weka_security_hardening_host:
+        description: Target host address
+        type: str
+        required: true
+      weka_security_hardening_username:
+        description: Authentication username
+        type: str
+      weka_security_hardening_password:
+        description: Authentication password
+        type: str
+      weka_security_hardening_api_key:
+        description: API key for authentication
+        type: str
+      weka_security_hardening_validate_certs:
+        description: Validate SSL certificates
+        type: bool
+        default: true
+      weka_security_hardening_state:
+        description: Desired state
+        type: str
+        default: present
+        choices: [present, absent]

@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for weka_upgrade
+
+# Target host
+weka_upgrade_host: ""
+
+# Authentication
+weka_upgrade_username: ""
+weka_upgrade_password: ""
+weka_upgrade_api_key: ""
+
+# Behavior
+weka_upgrade_validate_certs: true
+weka_upgrade_state: present

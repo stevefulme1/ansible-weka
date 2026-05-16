@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for weka_upgrade
+# Rolling cluster upgrade
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - weka_upgrade_host is defined
+    fail_msg: "weka_upgrade_host must be defined"
+    quiet: true
+
+- name: Execute weka upgrade
+  ansible.builtin.debug:
+    msg: >-
+      Rolling cluster upgrade.
+      Target: {{ weka_upgrade_host }}

@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for weka_security_hardening
+
+# Target host
+weka_security_hardening_host: ""
+
+# Authentication
+weka_security_hardening_username: ""
+weka_security_hardening_password: ""
+weka_security_hardening_api_key: ""
+
+# Behavior
+weka_security_hardening_validate_certs: true
+weka_security_hardening_state: present

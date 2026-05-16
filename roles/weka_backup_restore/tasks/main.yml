@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for weka_backup_restore
+# Configure snapshots and restore procedures
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - weka_backup_restore_host is defined
+    fail_msg: "weka_backup_restore_host must be defined"
+    quiet: true
+
+- name: Execute weka backup restore
+  ansible.builtin.debug:
+    msg: >-
+      Configure snapshots and restore procedures.
+      Target: {{ weka_backup_restore_host }}

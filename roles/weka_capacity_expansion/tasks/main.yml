@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for weka_capacity_expansion
+# Add drives and nodes to existing cluster
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - weka_capacity_expansion_host is defined
+    fail_msg: "weka_capacity_expansion_host must be defined"
+    quiet: true
+
+- name: Execute weka capacity expansion
+  ansible.builtin.debug:
+    msg: >-
+      Add drives and nodes to existing cluster.
+      Target: {{ weka_capacity_expansion_host }}

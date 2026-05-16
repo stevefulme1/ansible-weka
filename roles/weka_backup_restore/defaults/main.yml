@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for weka_backup_restore
+
+# Target host
+weka_backup_restore_host: ""
+
+# Authentication
+weka_backup_restore_username: ""
+weka_backup_restore_password: ""
+weka_backup_restore_api_key: ""
+
+# Behavior
+weka_backup_restore_validate_certs: true
+weka_backup_restore_state: present

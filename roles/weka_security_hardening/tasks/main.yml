@@ -1,0 +1,16 @@
+---
+# tasks/main.yml for weka_security_hardening
+# Enable encryption, LDAP, and TLS
+
+- name: Validate required variables
+  ansible.builtin.assert:
+    that:
+      - weka_security_hardening_host is defined
+    fail_msg: "weka_security_hardening_host must be defined"
+    quiet: true
+
+- name: Execute weka security hardening
+  ansible.builtin.debug:
+    msg: >-
+      Enable encryption, LDAP, and TLS.
+      Target: {{ weka_security_hardening_host }}

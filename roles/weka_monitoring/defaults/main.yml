@@ -1,0 +1,14 @@
+---
+# defaults/main.yml for weka_monitoring
+
+# Target host
+weka_monitoring_host: ""
+
+# Authentication
+weka_monitoring_username: ""
+weka_monitoring_password: ""
+weka_monitoring_api_key: ""
+
+# Behavior
+weka_monitoring_validate_certs: true
+weka_monitoring_state: present
