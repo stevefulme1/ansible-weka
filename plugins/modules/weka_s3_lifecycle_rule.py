@@ -104,14 +104,30 @@ def main():
     resource_id = module.params.get("rule_id")
 
     if state == "present":
+        existing = None
         if resource_id:
-            result = client.update("s3_lifecycle_rule", resource_id, module.params)
+            existing = client.get("s3_lifecycle_rule", resource_id)
+        elif module.params.get("name"):
+            candidates = client.list("s3_lifecycle_rule", {{"name": module.params["name"]}})
+            if candidates:
+                existing = candidates[0]
+
+        if existing:
+            if module.check_mode:
+                module.exit_json(changed=False, s3_lifecycle_rule=existing)
+            result = client.update("s3_lifecycle_rule", resource_id or existing.get("id", ""), module.params)
+            module.exit_json(changed=True, s3_lifecycle_rule=result)
         else:
             if module.check_mode:
                 module.exit_json(changed=True)
             result = client.create("s3_lifecycle_rule", module.params)
-        module.exit_json(changed=True, s3_lifecycle_rule=result)
+            module.exit_json(changed=True, s3_lifecycle_rule=result)
     else:
+        existing = None
+        if resource_id:
+            existing = client.get("s3_lifecycle_rule", resource_id)
+        if not existing:
+            module.exit_json(changed=False)
         if module.check_mode:
             module.exit_json(changed=True)
         client.delete("s3_lifecycle_rule", resource_id)

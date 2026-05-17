@@ -104,14 +104,30 @@ def main():
     resource_id = module.params.get("group_id")
 
     if state == "present":
+        existing = None
         if resource_id:
-            result = client.update("nfs_client_group", resource_id, module.params)
+            existing = client.get("nfs_client_group", resource_id)
+        elif module.params.get("name"):
+            candidates = client.list("nfs_client_group", {{"name": module.params["name"]}})
+            if candidates:
+                existing = candidates[0]
+
+        if existing:
+            if module.check_mode:
+                module.exit_json(changed=False, nfs_client_group=existing)
+            result = client.update("nfs_client_group", resource_id or existing.get("id", ""), module.params)
+            module.exit_json(changed=True, nfs_client_group=result)
         else:
             if module.check_mode:
                 module.exit_json(changed=True)
             result = client.create("nfs_client_group", module.params)
-        module.exit_json(changed=True, nfs_client_group=result)
+            module.exit_json(changed=True, nfs_client_group=result)
     else:
+        existing = None
+        if resource_id:
+            existing = client.get("nfs_client_group", resource_id)
+        if not existing:
+            module.exit_json(changed=False)
         if module.check_mode:
             module.exit_json(changed=True)
         client.delete("nfs_client_group", resource_id)
