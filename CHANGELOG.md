@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1] - 2026-05-18
+
+### Security
+- **CRITICAL**: Fixed credential leak where `password` and `api_key` were sent in API request bodies via raw `module.params` passthrough (all modules)
+- Added `_filter_params()` to `ApiClient` to strip connection/auth keys before API calls
+- Added HTTP request timeout (30s) to all API client methods to prevent indefinite hangs
+- Expanded `.gitignore` to exclude `.env`, `*.pem`, `*.key`, vault files, and other sensitive patterns
+
 ## [2.0.0] - 2026-05-17
 
 ### Added

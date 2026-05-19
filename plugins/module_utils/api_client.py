@@ -41,34 +41,49 @@ class ApiClient:
         return f"https://{self.host}/api/v1/{endpoint}"
 
     def get(self, resource_type, resource_id):
-        resp = self.session.get(self._url(f"{resource_type}s/{resource_id}"))
+        resp = self.session.get(self._url(f"{resource_type}s/{resource_id}"), timeout=30)
         if resp.status_code == 404:
             return None
         resp.raise_for_status()
         return resp.json()
 
     def list(self, resource_type, params=None):
-        resp = self.session.get(self._url(f"{resource_type}s"), params=params or {})
+        resp = self.session.get(self._url(f"{resource_type}s"), params=params or {}, timeout=30)
         resp.raise_for_status()
         data = resp.json()
         if isinstance(data, list):
             return data
         return data.get("data", data.get("items", []))
 
+    _CONNECTION_KEYS = frozenset({
+        "host", "username", "password", "api_key",
+        "validate_certs", "state", "timeout",
+    })
+
+    def _filter_params(self, params):
+        """Strip connection/auth keys from params before sending to API."""
+        return {k: v for k, v in params.items()
+                if k not in self._CONNECTION_KEYS and v is not None}
+
     def create(self, resource_type, params):
-        resp = self.session.post(self._url(f"{resource_type}s"), json=params)
+        resp = self.session.post(
+            self._url(f"{resource_type}s"), json=self._filter_params(params),
+            timeout=30,
+        )
         resp.raise_for_status()
         return resp.json()
 
     def update(self, resource_type, resource_id, params):
         resp = self.session.put(
-            self._url(f"{resource_type}s/{resource_id}"), json=params
+            self._url(f"{resource_type}s/{resource_id}"),
+            json=self._filter_params(params),
+            timeout=30,
         )
         resp.raise_for_status()
         return resp.json()
 
     def delete(self, resource_type, resource_id):
-        resp = self.session.delete(self._url(f"{resource_type}s/{resource_id}"))
+        resp = self.session.delete(self._url(f"{resource_type}s/{resource_id}"), timeout=30)
         if resp.status_code == 404:
             return
         resp.raise_for_status()
