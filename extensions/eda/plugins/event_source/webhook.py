@@ -10,11 +10,12 @@ logger = logging.getLogger(__name__)
 
 async def main(queue: asyncio.Queue, args: dict[str, Any]) -> None:
     """Receive Weka webhook events and forward to the EDA rulebook."""
-    host = str(args.get("host", "0.0.0.0"))
+    host = str(args.get("host", "127.0.0.1"))
+    max_payload_size = int(args.get("max_payload_size", 1048576))  # 1 MB
     port = int(args.get("port", 5000))
     token = args.get("token", "")
 
-    app = web.Application()
+    app = web.Application(client_max_size=max_payload_size)
 
     async def _handle(request: web.Request) -> web.Response:
         try:
