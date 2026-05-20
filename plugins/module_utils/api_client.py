@@ -38,7 +38,7 @@ class ApiClient:
             self.session.auth = (username, password)
 
     def _url(self, endpoint):
-        return f"https://{self.host}/api/v1/{endpoint}"
+        return f"https://{self.host}/api/v2/{endpoint}"
 
     def get(self, resource_type, resource_id):
         resp = self.session.get(self._url(f"{resource_type}s/{resource_id}"), timeout=30)

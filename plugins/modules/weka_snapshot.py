@@ -36,11 +36,17 @@ options:
     password:
         description: Authentication password.
         type: str
-        no_log: true
     api_key:
         description: API key for authentication.
         type: str
-        no_log: true
+    snapshot_uid:
+        description:
+            - The snapshot uid identifier.
+        type: str
+    name:
+        description:
+            - The name identifier.
+        type: str
     validate_certs:
         description: Whether to validate SSL certificates.
         type: bool
