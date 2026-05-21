@@ -1,0 +1,7 @@
+---
+# Integration test configuration for stevefulme1.weka
+weka_host: "CHANGEME"
+weka_username: "admin"
+weka_password: "CHANGEME"
+weka_validate_certs: false
+resource_prefix: "ansible-ci-weka"
